@@ -13,8 +13,10 @@ public class Reserva { //Nome da classe ----------.----------.----------
 	private Date checkOut;
 	
 private static SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy"); //Variável de máscara da data
+
+//
 	
-	public Reserva(Integer roomNumber, Date checkIn, Date checkOut) { //Método reserva
+	public Reserva(Integer roomNumber, Date checkIn, Date checkOut) { //Método reserva ((((1))))
 		if (!checkOut.after(checkIn)) {
 			throw new DomainException("Check-out date must be after check-in date");
 		}
@@ -41,12 +43,12 @@ private static SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy"); //Vari
 		return checkOut;
 	}
 
-	public long duracao() { //Método para calcular a duração
+	public long duracao() { //Método para calcular a duração ((((2))))
 		long diferenca = checkOut.getTime() - checkIn.getTime(); //diferenca é a variável, getTime é a função
 		return TimeUnit.DAYS.convert(diferenca, TimeUnit.MILLISECONDS); //TimeUnit é um tipo enumerado
 	}
 	
-	public void updateDates(Date checkIn, Date checkOut) {
+	public void updateDates(Date checkIn, Date checkOut) { //Método de atualizar datas ((((3))))
 		Date now = new Date();
 		if (checkIn.before(now) || checkOut.before(now)) {
 			throw new DomainException("Reservation dates for update must be future dates");
@@ -59,7 +61,7 @@ private static SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy"); //Vari
 	}
 	
 	@Override
-	public String toString() {
+	public String toString() { //O famoso toString ((((4))))
 		return "Room "
 			+ roomNumber
 			+ ", check-in: "
